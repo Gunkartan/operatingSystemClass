@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 int main() {
     int fd[2];
@@ -18,6 +19,7 @@ int main() {
         close(fd[1]);
         _exit(0);
     } else {
+        wait(NULL);
         printf("Parent. PID, %d.\n", (int) getpid());
         close(fd[1]);
         char buffer[100];
