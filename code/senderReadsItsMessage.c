@@ -17,6 +17,9 @@ int main() {
         close(fd[0]);
         write(fd[1], message, strlen(message) + 1);
         close(fd[1]);
+        char childBuffer[100];
+        read(fd[0], childBuffer, sizeof(childBuffer));
+        printf("%s\n", childBuffer);
         _exit(0);
     } else {
         wait(NULL);
