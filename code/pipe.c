@@ -9,12 +9,14 @@ int main() {
     pid_t pid = fork();
 
     if (pid == 0) {
+        printf("Child. PID, %d.\n", (int) getpid());
         close(fd[0]);
         char message[] = "Hello from a child.";
         write(fd[1], message, strlen(message) + 1);
         close(fd[1]);
         _exit(0);
     } else {
+        printf("Parent. PID, %d.\n", (int) getpid());
         close(fd[1]);
         char buffer[100];
         read(fd[0], buffer, sizeof(buffer));
