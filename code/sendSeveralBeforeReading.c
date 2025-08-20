@@ -6,37 +6,34 @@
 
 int main() {
     int fd[2];
-    pipe(fd);
-    pid_t pid = fork();
+    pipe(fd); //Create a pipe.
+    pid_t pid = fork(); //Create a fork.
 
     if (pid == 0) {
-        pid_t childPID = getpid();
+        pid_t childPID = getpid(); //Get the child's PID.
         char message[100];
-        printf("Child. PID, %d.\n", (int) childPID);
+        printf("Child. PID, %d.\n", (int) childPID); //Print the child's PID.
         close(fd[0]);
 
-        for (int i = 0; i < 3; i++) {
-            snprintf(message, sizeof(message), "Hello %d from a child.", i);
-            write(fd[1], message, strlen(message) + 1);
+        for (int i = 0; i < 3; i++) { //Send a message 3 times.
+            snprintf(message, sizeof(message), "Hello %d from a child.", i); //Create a message.
+            write(fd[1], message, strlen(message) + 1); //Write the message by closing the read end first. Close the write end after finishing.
         }
 
         close(fd[1]);
         _exit(0);
     } else {
-        wait(NULL);
-        printf("Parent. PID, %d.\n", (int) getpid());
+        wait(NULL); //Wait for the child to finish processing.
+        printf("Parent. PID, %d.\n", (int) getpid()); //Print the parent's PID.
         close(fd[1]);
         char buffer[100];
-        ssize_t numBytes = read(fd[0], buffer, sizeof(buffer));
-        read(fd[0], buffer, sizeof(buffer));
-        printf("%s\n", buffer);
-        printf("The length of a message, including the null terminator, is %ld.\n", strlen(buffer) + 1);
-        printf("The overall length of everything in the pipe is %zd.\n", numBytes);
+        // read(fd[0], buffer, sizeof(buffer));
+        // printf("%s\n", buffer);
 
-        // for (int i = 0; i < 3; i++) {
-        //     read(fd[0], buffer, strlen("Hello 0 from a child.") + 1);
-        //     printf("%s\n", buffer);
-        // }
+        for (int i = 0; i < 3; i++) { //Read a message 3 times.
+            read(fd[0], buffer, strlen("Hello 0 from a child.") + 1); //Read the message by closing the write end first. Close the read end after finishing.
+            printf("%s\n", buffer); //Print the message.
+        }
 
         close(fd[0]);
     }
