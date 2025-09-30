@@ -4,8 +4,8 @@
 int counter = 0;
 
 void *increment(void *arg) {
-    for (int i = 0; i < 1000000; i++) {
-        counter++;
+    for (int i = 0; i < 10000; i++) {
+        counter += 2;
     }
 
     return NULL;
