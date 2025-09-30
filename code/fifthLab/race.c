@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <pthread.h>
+#include <sched.h>
 
 int counter = 0;
 
 void *increment(void *arg) {
     for (int i = 0; i < 100000; i++) {
         counter += 2;
+        sched_yield();
     }
 
     return NULL;
