@@ -17,12 +17,12 @@ int right(int p) {
 
 void think(int p) {
     printf("Philosopher %d is thinking.\n", p);
-    sleep(rand() % 2 + 1);
+    usleep(100000);
 }
 
 void eat(int p) {
     printf("Philosopher %d starts eating.\n", p);
-    sleep(rand() % 2 + 1);
+    usleep(100000);
     printf("Philosopher %d finishes eating.\n", p);
 }
 
