@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/lib/modules/6.14.0-35-generic/build/include",
+                "/lib/modules/6.14.0-35-generic/build/include/uapi",
+                "/lib/modules/6.14.0-35-generic/build/arch/x86/include",
+                "/lib/modules/6.14.0-35-generic/build/arch/x86/include/generated",
+                "/lib/modules/6.14.0-35-generic/build/arch/x86/include/uapi",
+                "/lib/modules/6.14.0-35-generic/build/include/asm-generic"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "/lib/modules/6.14.0-35-generic/build/include",
+                    "/lib/modules/6.14.0-35-generic/build/include/uapi",
+                    "/lib/modules/6.14.0-35-generic/build/arch/x86/include",
+                    "/lib/modules/6.14.0-35-generic/build/arch/x86/include/generated",
+                    "/lib/modules/6.14.0-35-generic/build/arch/x86/include/uapi",
+                    "/lib/modules/6.14.0-35-generic/build/include/asm-generic"
+                ],
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": ""
+            },
+            "defines": [
+                "__KERNEL__",
+                "MODULE",
+                "KBUILD_MODNAME=\"firstModule\""
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
